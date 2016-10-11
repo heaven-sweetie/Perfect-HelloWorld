@@ -37,10 +37,14 @@ routes.add(method: .post, uri: "/api/v1/people/json") { request, response in
 
 server.addRoutes(routes)
 
-server.serverPort = 8080
+server.serverPort = CommandLine.arguments[2] ?? 8080
 
 do {
     try server.start()
 } catch PerfectError.networkError(let err, let msg) {
     print("Network error thrown: \(err) \(msg)")
 }
+
+
+
+
