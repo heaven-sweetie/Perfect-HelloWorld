@@ -37,7 +37,7 @@ routes.add(method: .post, uri: "/api/v1/people/json") { request, response in
 
 server.addRoutes(routes)
 
-server.serverPort = 80
+server.serverPort = 8080
 
 do {
     try server.start()
