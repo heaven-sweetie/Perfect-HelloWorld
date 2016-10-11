@@ -37,7 +37,14 @@ routes.add(method: .post, uri: "/api/v1/people/json") { request, response in
 
 server.addRoutes(routes)
 
-server.serverPort = CommandLine.arguments[2] ?? 8080
+let argument: String = CommandLine.arguments[2]
+if let port = UInt16(argument) {
+    print("Port: \(port)")
+    server.serverPort = port
+} else {
+    print("Default Port")
+    server.serverPort = 8080
+}
 
 do {
     try server.start()
