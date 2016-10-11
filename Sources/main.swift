@@ -3,13 +3,12 @@ import PerfectHTTP
 import PerfectHTTPServer
 
 let server = HTTPServer()
-
 var routes = Routes()
 
 routes.add(method: .get, uri: "/") { request, response in
     response.setHeader(.contentType, value: "text/html")
     response.appendBody(string: "<html><title>Hello, world!</title><body>Hello, world!</body></html>")
-    response.completed()    
+    response.completed()
 }
 
 routes.add(method: .get, uri: "/api/v1/people") { request, response in
@@ -38,11 +37,10 @@ routes.add(method: .post, uri: "/api/v1/people/json") { request, response in
 
 server.addRoutes(routes)
 
-server.serverPort = 8181
+server.serverPort = 80
 
 do {
     try server.start()
 } catch PerfectError.networkError(let err, let msg) {
     print("Network error thrown: \(err) \(msg)")
 }
-
